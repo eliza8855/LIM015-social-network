@@ -10,7 +10,3 @@
 
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
- // const auth = firebase.auth();
-  // const fStore = firebase.firestore();
-
-  //export { auth };

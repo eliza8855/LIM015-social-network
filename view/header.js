@@ -1,52 +1,49 @@
-import {signOut} from '../firebase/fb-functions.js'
+import { signOut } from '../firebase/fb-functions.js'
 
-const  viewHeader = () => {
-  const header = `
-
-  <header class="header">
-  
+const viewHeader = () => {
+  const navHeader =/*html*/ `
+   
     <nav class="nav">
-      <figure class="logoNav">
-        <a href=" ">
-          <img src=" ../img/logosf.png" >
-        </a>
-      </figure>
-  
-      <span class="btn-menu">
-        <i class=" "> </i>
-  
-      </span>
-  
-      <ul class="navHome">
-        <li >
-          <a id="navHome" href="#/home" class="navlink">INICIO</a>
+        <div class="nav__logo">
+          <img  class="header__logo" src=" ../img/logoHeader.png" >
+        </div>
+        <input type="checkbox" class="checking" id="check">
+        <label for="check" class="bar-btn">
+        <i class="fas fa-bars"></i>
+        </label>
+        <div class="backdrop"></div>
+      <ul class="nav__menu">
+        <li  >
+          <a id="navHome" href="#/home" class="nav__link "><i class="fas fa-home"></i>INICIO  </a>
         </li>
         <li >
-          <a id="navProfile" href="#/profile" class="navlink">PERFIL</a>
+          <a id="navProfile" href="#/profile" class="nav__link"> <i class="fas fa-user"></i>PERFIL</a>
         </li>
         <li >
-          <a href="#/profile" id="navClose" class="navlink"> CERRAR SESION</a>
+          <a href="#/profile" id="navClose" class="nav__link"> <i class="fas fa-sign-out-alt"></i>CERRAR SESION </a>
         </li>
       </ul>
   
     </nav>
   
-  </header>
   `
-  const sectionNav =document.createElement('section');
-  sectionNav.innerHTML=header;
-  const navClose = sectionNav.querySelector('#navClose');
+  const sectionHeader = document.createElement('header');
+  sectionHeader.innerHTML = navHeader;
+
+  const navClose = sectionHeader.querySelector('#navClose');
   navClose.addEventListener('click', (event) => {
     event.preventDefault();
     signOut().then(() => {
-        console.log('sign Out');
-        window.open('#','_self')
+      window.open('#', '_self')
+      // window.location.hash = "";
+      // window.location.hash = "Again-No-back-button"
+      // window.onhashchange = function(){window.location.hash="No-back-button";}
     })
-  
+
   });
 
-  return sectionNav
+  return sectionHeader
 }
- 
 
-export {viewHeader};
+
+export { viewHeader };
